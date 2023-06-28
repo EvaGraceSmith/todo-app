@@ -15,7 +15,7 @@ In Phase 1, we’re going to perform some refactoring of a Todo application buil
 
 * Create a Detailed UML.
 
-![Phase 1 UML](./src/assets/Class31UML.png);
+![Phase 1 UML](./src/assets/phase1UML.png);
 
 * Properly modularize the application into separate components, note the proposed file structure below.
 
