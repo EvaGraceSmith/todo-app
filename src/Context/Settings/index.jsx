@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
-import { useState } from 'react';
+
 // create a context object.......
 
 export const SettingsContext = React.createContext();
@@ -11,6 +11,26 @@ function SettingsProvider({ children }){
     const [ showCompleted, setShowCompleted ] = useState(false);
     const [ sortField, setSortField ] = useState('difficulty');
 
+  // Read settings from Local Storage on component mount
+  useEffect(() => {
+    const storedSettings = localStorage.getItem('settings');
+    if (storedSettings) {
+      const { displayCount, showCompleted, sortField } = JSON.parse(storedSettings);
+      setDisplayCount(displayCount);
+      setShowCompleted(showCompleted);
+      setSortField(sortField);
+    }
+  }, []);
+
+    // Update Local Storage when settings change
+    useEffect(() => {
+        const settings = {
+          displayCount,
+          showCompleted,
+          sortField,
+        };
+        localStorage.setItem('settings', JSON.stringify(settings));
+      }, [displayCount, showCompleted, sortField]);
 
     // this object contains the state and any functions we need to share
     const state = {
@@ -21,6 +41,7 @@ function SettingsProvider({ children }){
         setShowCompleted,
         setSortField,
     }
+    
     return (
         <SettingsContext.Provider value={state}>
             {children}
