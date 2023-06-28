@@ -30,6 +30,11 @@ const useForm = (callback, defaultValues={}) => {
     setValues(values => ({ ...values, [name]: value }));
   };
 
+  const handleDelete = (event) => {
+    event.preventDefault();
+    callback({...values});
+  };
+
   useEffect( () => {
     setValues( defaultValues );
   }, [defaultValues]);
@@ -37,6 +42,7 @@ const useForm = (callback, defaultValues={}) => {
   return {
     handleChange,
     handleSubmit,
+    handleDelete,
     values,
   };
 };
