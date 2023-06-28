@@ -29,10 +29,31 @@ In Phase 1, we’re going to perform some refactoring of a Todo application buil
 
 * NOTE: The expectation to style this entire component in one day is likely unrealistic. The recommendation is to implement the required functionality, then systematically begin styling with Mantine. Match the comp image(s) as closely as possible. 80% of the design work will likely take 20% of your time. By the end of the week, being mostly there with style is the goal!
 
+### Documentation:
+
+* Describe how global state is consumed by the components.
+
+
+Global state is consumed by the components through the use of the Context API. The components access the global state by wrapping themselves with a Context Provider, which makes the state available to them via the useContext hook. Components can then access and update the global state as needed.
+
+* Describe the operation of the hook: useForm().
+
+The useForm() hook is responsible for handling form state and providing methods and values to manage form inputs. It returns an object with properties such as form values, event handlers, and form submission functions. By using this hook, components can easily manage form state and interact with user input in a declarative and efficient manner.
+
+### Utilization of AI:
+
+* Prompt to write tests:
+
+Could you help me write tests for this application? Here are some guidelines to use. Please utilize jest. 
+
+Tests should assert all behavioral functionality.
+Do a deep mount of the app, and set tests to make assertions on the child components that consume context from the Provider.
+Can they see context?
+
 
 ### Links
 
-[Deployment: CodeSandbox]
+[Deployment: CodeSandbox on context-settings branch](https://codesandbox.io/p/github/EvaGraceSmith/todo-app/context-settings?workspaceId=0f6b3b9a-f258-4570-996a-1c11d92f10b3)
 
 ### Collaborators
 
