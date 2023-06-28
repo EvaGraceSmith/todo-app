@@ -17,7 +17,7 @@ const useStyles = createStyles((theme) => ({
 function Footer() {
     const { classes } = useStyles();
   return (
-    <footer className={classes.footer}>
+    <footer className={classes.footer} data-testid="footer">
       <p>© 2023 Eva Grace Smith</p>
     </footer>
   );
