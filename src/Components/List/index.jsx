@@ -5,20 +5,28 @@ import { Pagination } from "@mantine/core";
 
 
 
-function List({ list, toggleComplete}){
+function List({ list, toggleComplete, deleteItem}){
     const {
         displayCount,
         showCompleted,
         sortField,
+        setSortField,
     } = useContext(SettingsContext);
 
     const [activePage, setActivePage] = useState(1);
     
 
+  // Sort the list based on the selected sort field
+  const sortedList = list.sort((a, b) => {
+    if (a[sortField] < b[sortField]) return -1;
+    if (a[sortField] > b[sortField]) return 1;
+    return 0;
+  });
+
 //proof of life
 
-// our renderable list will conditionally render based on the settings context, it will show or hide completed tasks
-const renderList = showCompleted ? list : list.filter(item => !item.complete);
+  // Determine the renderable list based on showCompleted setting
+  const renderList = showCompleted ? sortedList : sortedList.filter(item => !item.complete);
 
 //TODO: determine how many pages will be in our pagination component
 const pageCount = Math.ceil(renderList.length / displayCount);
@@ -46,6 +54,19 @@ const displayList = renderList.slice(listStart, listEnd);
       ))}
 
         <Pagination value={activePage} onChange={setActivePage} size="md" total={pageCount} radius={0} />
+
+        <div>
+        <label>
+          Sort By:
+          <select value={sortField} onChange={(e) => setSortField(e.target.value)}>
+            <option value="difficulty">Difficulty</option>
+            <option value="assignee">Assignee</option>
+            <option value="text">Text</option>
+            {/* Add more options for other fields if needed */}
+          </select>
+        </label>
+      </div>
+      
         </>
     )
 }
