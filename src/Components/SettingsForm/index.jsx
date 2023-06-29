@@ -41,12 +41,7 @@ function SettingsForm() {
     <form onSubmit={handleSubmit}>
             <label>
         Show Completed ToDos:
-        <Switch
-          // type="checkbox"
-          // name="showCompleted"
-          checked={formValues.showCompleted}
-          onChange={handleChange}
-        />
+        <Switch checked={formValues.showCompleted} onChange={(handleChange)=> setShowCompleted(handleChange.target.checked)} />
       </label>
       <label>
         Items per page:
