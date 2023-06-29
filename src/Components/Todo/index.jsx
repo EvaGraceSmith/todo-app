@@ -1,10 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form';
-
+import { createStyles, Header } from "@mantine/core";
 import { v4 as uuid } from 'uuid';
 import List from '../List';
 
+const useStyles = createStyles((theme) => ({
+  header: {
+    backgroundColor: theme.colors.dark[7],
+    width: '70%',
+    height: 60,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'left',
+    margin: 'auto',
+    marginTop: 20,
+    padding: theme.spacing.md,
+    color: theme.colors.gray[0],
+    fontSize: theme.fontSizes.xs,
+    fontWeight: 500,
+
+  },
+}));
+
+
 const Todo = () => {
+
+  const {classes} = useStyles();
 
   const [defaultValues] = useState({
     difficulty: 4,
@@ -49,9 +71,9 @@ const Todo = () => {
 
   return (
     <>
-      {/* <header data-testid="todo-header"> */}
+   <Header className={classes.header}>
         <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
-      {/* </header> */}
+      </Header>
 
       {/* leave the form code inside of the Todo Component */}
       <form onSubmit={handleSubmit}>
