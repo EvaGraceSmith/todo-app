@@ -9,7 +9,7 @@ Our application will be an API testing tool that can be run in any browser, allo
 
 
 
-### Phase 1: Application Setup
+## Phase 1: Application Setup
 
 In Phase 1, we’re going to perform some refactoring of a Todo application built by another team. This application mixes application state and user settings at the top level and passes things around. It was a good proof of concept, but we need to make this production ready.
 
@@ -54,6 +54,24 @@ Can they see context?
 ### Links
 
 [Deployment: CodeSandbox on context-settings branch](https://codesandbox.io/p/github/EvaGraceSmith/todo-app/context-settings?workspaceId=0f6b3b9a-f258-4570-996a-1c11d92f10b3)
+
+## Phase 2 Requirements
+
+In Phase 2, we’re going to extend the functionality of our application by allowing the user to make some decisions on how they would like the application to function. Specifically, we’ll let them make changes to 2 settings.
+
+* Implement the Context API to make some basic application settings available to components.
+
+* How many To Do Items to show at once.
+* Whether or not to show completed items.
+* Hint: if reusing the custom useForm() hook, event validation may be necessary if using any Mantine component other than <TextInput />.
+
+* Provide the users with a form where they can change the values for those settings.
+* This should be given in the form of a new component, perhaps linked to from the main navigation.
+* Hint: Use Browser Router to create the page/route/component for this.
+* Once settings are updated, render the updated settings to the right of the “form”. Consider using <Grid />, <Card />, and <When /> components.
+
+* Save the users choices in Local Storage.
+* Retrieve their preferences from Local Storage and apply them to the application on startup.
 
 ### Collaborators
 
