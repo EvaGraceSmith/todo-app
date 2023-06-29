@@ -1,14 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { SettingsContext } from '../../Context/Settings/index.jsx';
-import { Switch } from '@mantine/core';
+import { NumberInput, Switch, TextInput } from '@mantine/core';
 
-function Demo() {
-  return (
-    <Switch
-      label="I agree to sell my privacy"
-    />
-  );
-}
+
 
 function SettingsForm() {
   const { displayCount, showCompleted, sortField, setDisplayCount, setShowCompleted, setSortField } = useContext(
@@ -40,14 +34,18 @@ function SettingsForm() {
   return (
     <form onSubmit={handleSubmit}>
             <label>
-        Show Completed ToDos:
-        <Switch checked={formValues.showCompleted} onChange={(handleChange)=> setShowCompleted(handleChange.target.checked)} />
+
+        <Switch checked={formValues.showCompleted} label="Show Completed ToDos" onChange={(handleChange)=> setShowCompleted(handleChange.target.checked)} />
       </label>
       <label>
-        Items per page:
-        <input
-          type="number"
-          name="displayCount"
+        {/* Items per page: */}
+        <NumberInput
+          defaultValue={18}
+          placeholder="Items per Page"
+          label="Items per Page"
+          size="xs"
+          // type="number"
+          // name="displayCount"
           value={formValues.displayCount}
           onChange={handleChange}
         />
