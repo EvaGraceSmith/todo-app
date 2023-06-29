@@ -17,7 +17,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: 20,
     padding: theme.spacing.md,
     color: theme.colors.gray[0],
-    fontSize: theme.fontSizes.xs,
+    fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
   },
