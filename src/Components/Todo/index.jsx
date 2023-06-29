@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form';
-import { Card, createStyles, Grid, Header, TextInput } from "@mantine/core";
+import { Button, Card, createStyles, Grid, Header, Slider,TextInput } from "@mantine/core";
 import { v4 as uuid } from 'uuid';
 import List from '../List';
 
@@ -27,6 +27,15 @@ const useStyles = createStyles((theme) => ({
 const Todo = () => {
 
   const { classes } = useStyles();
+
+  // Configure marks to match step
+const MARKS = [
+  { value: 0, label: '1' },
+  { value: 25, label: '2' },
+  { value: 50, label: '3' },
+  { value: 75, label: '4' },
+  { value: 100, label: '5' },
+];
 
   const [defaultValues] = useState({
     difficulty: 4,
@@ -77,25 +86,38 @@ const Todo = () => {
 
       {/* leave the form code inside of the Todo Component */}
       <Grid className={classes.grid}>
-      <Grid.Col span={2}></Grid.Col>
+        <Grid.Col span={2}></Grid.Col>
         <Grid.Col span={4}>
           <Card className={classes.card}>
             <form onSubmit={handleSubmit}>
               <h2>Add To Do Item</h2>
 
               <label>
-                <span>To Do Item</span>
-                <input onChange={handleChange} name="text" type="text" placeholder="Item Details" />
+                <TextInput
+                  placeholder="Item Details"
+                  label="To Do Item"
+                  radius="xs"
+                  size="xs"
+                  onChange={handleChange} />
               </label>
 
               <label>
-                <span>Assigned To</span>
-                <TextInput onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
+                <TextInput
+                  placeholder="Assignee Name"
+                  label="Assigned To"
+                  radius="xs"
+                  size="xs"
+                  onChange={handleChange} />
               </label>
 
               <label>
                 <span>Difficulty</span>
-                <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
+                <Slider 
+                onChange={handleChange} 
+                defaultValue={defaultValues.difficulty} 
+                type="range" 
+                min={1} max={5} 
+                name="difficulty" />
               </label>
 
               <label>
