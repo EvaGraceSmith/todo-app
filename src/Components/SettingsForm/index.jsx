@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { SettingsContext } from '../../Context/Settings/index.jsx';
-import { NumberInput, Switch, TextInput } from '@mantine/core';
+import { Button, NumberInput, Switch, TextInput } from '@mantine/core';
+import { When } from 'react-if';
 
 
 
@@ -33,33 +34,42 @@ function SettingsForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-            <label>
-
-        <Switch checked={formValues.showCompleted} label="Show Completed ToDos" onChange={(handleChange)=> setShowCompleted(handleChange.target.checked)} />
+      <label>
+        <Switch checked={formValues.showCompleted} label="Show Completed ToDos" onChange={(e)=> {setShowCompleted(e.target.checked)
+        formValues.showCompleted= e.target.checked} }/>
       </label>
       <label>
-        {/* Items per page: */}
         <NumberInput
-          defaultValue={18}
+          defaultValue={3}
           placeholder="Items per Page"
           label="Items per Page"
           size="xs"
           // type="number"
-          // name="displayCount"
+          name="displayCount"
           value={formValues.displayCount}
-          onChange={handleChange}
+          onChange={event => setDisplayCount(event.target.value)}
         />
       </label>
 
       <label>
-        Sort Field:
-        <select name="sortField" value={formValues.sortField} onChange={handleChange}>
-          <option value="difficulty">Difficulty</option>
-          <option value="assignee">Assignee</option>
-          <option value="text">Text</option>
-        </select>
+        {/* Sort Field: */}
+        <TextInput 
+              placeholder="difficulty"
+              label="Sort Keyword"
+              size="xs"
+              name="sortField" 
+              value={formValues.sortField} 
+              // onChange={handleChange}
+              //this is what they did in class:
+              onChange={(e)=> {setSortField(e.target.value)}}
+          // <option value="difficulty">Difficulty</option>
+          // <option value="assignee">Assignee</option>
+          // <option value="text">Text</option> 
+        />
       </label>
-      <button type="submit">Update Settings</button>
+      <Button 
+      size="xs"
+      type="submit">Show New Settings</Button>
     </form>
   );
 }
