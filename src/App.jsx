@@ -2,16 +2,23 @@ import React from 'react';
 import Todo from './Components/Todo';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import SettingsForm from './Components/SettingsForm';
+import { BrowserRouter, Routes, Route  } from 'react-router-dom';
 // import {HeaderSimple} from './Components/Header/index';
 
 
 export default function App() {
   return (
-    <>
-    <Header />
-      <Todo  />
-      <Footer />
-    </>
+
+            <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Todo />} />
+            <Route path="/settings" element={<SettingsForm />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+
 
 
   );

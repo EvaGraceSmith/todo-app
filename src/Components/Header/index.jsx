@@ -10,7 +10,8 @@
 
 // export default HeaderSimple;
 
-import { createStyles, Navbar, Text} from '@mantine/core';
+import { createStyles, Navbar} from '@mantine/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
     navbar: {
@@ -31,8 +32,8 @@ const {classes} = useStyles();
     return (
         <header data-testid="header">
             <Navbar className= {classes.navbar} >
-
-            <Text>My To Do List</Text>
+            <Link className={classes.link} to="/" default >Home</Link>
+          <Link className={classes.link} to="/settings">Settings</Link>
             </Navbar>
         </header>
     )
