@@ -5,21 +5,23 @@ import Footer from './Components/Footer';
 import SettingsPage from './Components/Settings/SettingsPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SettingsContext } from './Context/Settings';
-import Auth from './Components/Auth';
+import { AuthContext } from './Context/Auth';
+import { When } from 'react-if';
 
 export default function App() {
-  const { title, email } = useContext(SettingsContext);
+const { isLoggedIn, can } = useContext(AuthContext);
+const { list } = useContext(SettingsContext);
+
   return (
 
     <BrowserRouter>
       <Header />
-      <Auth capability="read">
-        <p>I can read!</p>
-      </Auth>
+      <When condition={isLoggedIn && can('read')}>
       <Routes>
-        <Route path="/" element={<Todo />} />
+        <Route path="/" element={<Todo />}list={list} />
         <Route path="/settings" element={<SettingsPage />} />
       </Routes>
+      </When>
       <Footer />
     </BrowserRouter>
 
@@ -27,6 +29,8 @@ export default function App() {
 
   );
 }
+
+
 
 
 
