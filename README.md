@@ -2,12 +2,7 @@
 
 ## Author: Eva Grace Smith
 
-### todo-app
-
 Our application will be an API testing tool that can be run in any browser, allowing a user to easily interact with APIs in a familiar interface.
-
-
-
 
 ## Phase 1: Application Setup
 
@@ -95,7 +90,7 @@ In Phase 3, we’d like to extend the functionality of the application by requir
 
 ### Links
 
-[Deployment: CodeSandbox on auth branch](https://codesandbox.io/p/github/EvaGraceSmith/todo-app/context-methods?workspaceId=0f6b3b9a-f258-4570-996a-1c11d92f10b3)
+[Deployment: CodeSandbox on auth branch](https://codesandbox.io/p/github/EvaGraceSmith/todo-app/auth?workspaceId=0f6b3b9a-f258-4570-996a-1c11d92f10b3)
 
 
 
