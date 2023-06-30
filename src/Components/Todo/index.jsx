@@ -21,6 +21,38 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 500,
 
   },
+  grid: {
+  },
+
+  label:{
+
+  },
+
+  card: {
+    backgroundColor: theme.colors.gray[0],
+    marginTop: 20,
+    marginBottom: 20,
+  },
+
+  card2:{
+    backgroundColor: theme.colors.gray[0],
+    marginTop: 20,
+    marginBottom: 20,
+  },
+
+  button:{
+    marginTop: 20,
+    // marginBottom: 20,
+  },
+
+  textinput:{
+    marginBottom: 20,
+  },
+
+  list:{
+    marginTop: 20,
+    marginBottom: 20,
+  },
 }));
 
 
@@ -29,12 +61,12 @@ const Todo = () => {
   const { classes } = useStyles();
 
   // Configure marks to match step
-const MARKS = [
-  { value: 0, label: '1' },
-  { value: 25, label: '2' },
-  { value: 50, label: '3' },
-  { value: 75, label: '4' },
-  { value: 100, label: '5' },
+const Marks = [
+  { value: 0},
+  { value: 25 },
+  { value: 50 },
+  { value: 75 },
+  { value: 100 },
 ];
 
   const [defaultValues] = useState({
@@ -88,25 +120,36 @@ const MARKS = [
       <Grid className={classes.grid}>
         <Grid.Col span={2}></Grid.Col>
         <Grid.Col span={4}>
-          <Card className={classes.card}>
+          <Card className={classes.card}
+                      shadow='sm'
+                      padding='lg'
+                      withBorder
+          
+          >
             <form onSubmit={handleSubmit}>
               <h2>Add To Do Item</h2>
 
               <label>
                 <TextInput
+                className={classes.textinput}
                   placeholder="Item Details"
                   label="To Do Item"
                   radius="xs"
                   size="xs"
+                  name ="text"
+                  type = "text" 
                   onChange={handleChange} />
               </label>
 
               <label>
                 <TextInput
+                className={classes.textinput}
                   placeholder="Assignee Name"
                   label="Assigned To"
                   radius="xs"
                   size="xs"
+                  name = "assignee"
+                  type = "text"
                   onChange={handleChange} />
               </label>
 
@@ -115,26 +158,27 @@ const MARKS = [
                 <Slider 
                 onChange={handleChange} 
                 defaultValue={defaultValues.difficulty} 
+                marks={Marks}
                 type="range" 
                 min={1} max={5} 
                 name="difficulty" />
               </label>
 
               <label>
-                <button type="submit">Add Item</button>
+                <Button 
+                className={classes.button}
+                type="submit">
+                  Add Item</Button>
               </label>
             </form>
           </Card>
         </Grid.Col>
         <Grid.Col span={4}>
-          <Card className={classes.card2}
-            shadow='sm'
-            padding='lg'
-            withBorder
-            justifyContent='left'
-          >
-            <List list={list} toggleComplete={toggleComplete} deleteItem={deleteItem} />
-          </Card>
+
+            <List
+            className={classes.list} 
+            list={list} toggleComplete={toggleComplete} deleteItem={deleteItem} />
+
         </Grid.Col>
         <Grid.Col span={2}></Grid.Col>
       </Grid>

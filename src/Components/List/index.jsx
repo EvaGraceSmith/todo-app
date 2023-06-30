@@ -1,6 +1,26 @@
 import { useContext, useState } from "react"
 import { SettingsContext } from "../../Context/Settings";
-import { Pagination } from "@mantine/core";
+import { CloseButton, Container, createStyles, Group, Pagination, Card, Text, Badge, Space,  } from '@mantine/core';
+
+
+const useStyles = createStyles((theme) => ({
+  badge: {
+    cursor: 'pointer',
+    marginTop: 5,
+    marginLeft: 5,
+    marginBottom: 5,
+  },
+  group: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    withBorder: true,
+    shadow: 'lg',
+  },
+  card: {
+    marginTop: 20,
+  },
+}));
 
 
 
@@ -15,6 +35,7 @@ function List({ list, toggleComplete, deleteItem}){
 
     const [activePage, setActivePage] = useState(1);
     
+    const {classes} = useStyles();
 
   // Sort the list based on the selected sort field
   const sortedList = list.sort((a, b) => {
@@ -42,30 +63,67 @@ const displayList = renderList.slice(listStart, listEnd);
 
     return (
         <>
+        <Container px="sm" spacing={10}>
+        {displayList.map(item => (
+          <>
+          <Card 
+          className={classes.card}
+          key={item.id}
+          padding="lg"
+          radius="sm"
+          withBorder
+          shadow="lg"
+          >
+            <Card.Section
+            withBorder>
+              <Group
+               className={classes.group}
+              padding="sm">
+                <Badge 
+                className={classes.badge}
+                marginLeft="sm"
+                marginTop="sm"
+                color= {item.complete ? 'red' : 'green'}
+                variant="filled"
+                onClick={() => toggleComplete(item.id)}>
+                  {item.complete ? 'Complete' : 'Pending'}
+                </Badge>
+                <Text size="lg" fontcolor="black">{item.assignee}</Text>
+                <CloseButton onClick={() => deleteItem(item.id)} 
+                title="Delete To Do Item"
+                size="xs"/>
+              </Group>
+              </Card.Section>
+            <Card.Section
+            inheritPadding py="xs">
+              <Text size="lg">{item.text}</Text>
+              <Text align="right">
+                <small>
+                Difficulty: {item.difficulty}
+                </small>
+              </Text>
+            </Card.Section>
 
-              {displayList.map(item => (
-        <div key={item.id}>
-          <p>{item.text}</p>
+
+
+          {/* <p>{item.text}</p>
           <p><small>Assigned to: {item.assignee}</small></p>
           <p><small>Difficulty: {item.difficulty}</small></p>
           <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
           <hr />
-        </div>
+        </div> */}
+
+          </Card>
+<Space h="md"/>
+</>
       ))}
 
         <Pagination value={activePage} onChange={setActivePage} size="md" total={pageCount} radius={0} />
 
-        <div>
-        <label>
-          Sort By:
-          <select value={sortField} onChange={(e) => setSortField(e.target.value)}>
-            <option value="difficulty">Difficulty</option>
-            <option value="assignee">Assignee</option>
-            <option value="text">Text</option>
-            {/* Add more options for other fields if needed */}
-          </select>
-        </label>
-      </div>
+
+        </Container>
+
+
       
         </>
     )
