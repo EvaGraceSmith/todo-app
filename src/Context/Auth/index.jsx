@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import testUsers from './lib/users';
 import jwt_decode from "jwt-decode";
+import cookie from 'react-cookies';
 
 
 export const AuthContext = React.createContext();
@@ -10,12 +11,19 @@ function AuthProvider({ children }){
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
 
+  React.useEffect(() => {
+    const cookieToken = cookie.load('auth');
+    _validateToken(cookieToken);
+  }, []);
+
+
   const _validateToken = (token) => {
     try {
       // if token is valid, then we HAVE a user assigned to the validUser variable
       let validUser = jwt_decode(token);
       console.log('validUser', validUser);
       if (validUser){
+        cookie.save('auth', token);
         setUser(validUser);
         setIsLoggedIn(true);
         console.log('I am logged in');

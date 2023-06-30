@@ -3,6 +3,7 @@ import useForm from '../../hooks/form';
 import { Button, Card, createStyles, Grid, Header, Slider, Text, TextInput } from "@mantine/core";
 import { v4 as uuid } from 'uuid';
 import List from '../List';
+import Auth from '../Auth';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -21,14 +22,8 @@ const useStyles = createStyles((theme) => ({
     color: theme.colors.gray[0],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
-
-  },
-  grid: {
   },
 
-  label: {
-
-  },
 
   card: {
     backgroundColor: theme.colors.gray[0],
@@ -50,7 +45,6 @@ const useStyles = createStyles((theme) => ({
   textinput: {
     marginBottom: 20,
   },
-
 
   list: {
     marginTop: 20,
@@ -99,9 +93,7 @@ const Todo = () => {
       }
       return item;
     });
-
     setList(items);
-
   }
 
   useEffect(() => {
@@ -123,60 +115,62 @@ const Todo = () => {
       <Grid className={classes.grid}>
         <Grid.Col span={2}></Grid.Col>
         <Grid.Col span={3}>
-          <Card className={classes.card}
-            shadow='sm'
-            padding='lg'
-            withBorder
 
-          >
-            <form onSubmit={handleSubmit}>
-              <h2>Add To Do Item</h2>
+          <Auth capability="create">
+            <Card className={classes.card}
+              shadow='sm'
+              padding='lg'
+              withBorder
+            >
+              <form onSubmit={handleSubmit}>
+                <h2>Add To Do Item</h2>
 
-              <label>
-                <TextInput
-                  className={classes.textinput}
-                  placeholder="Item Details"
-                  label="To Do Item"
-                  radius="xs"
-                  size="lg"
-                  name="text"
-                  type="text"
-                  onChange={handleChange} />
-              </label>
+                <label>
+                  <TextInput
+                    className={classes.textinput}
+                    placeholder="Item Details"
+                    label="To Do Item"
+                    radius="xs"
+                    size="lg"
+                    name="text"
+                    type="text"
+                    onChange={handleChange} />
+                </label>
 
-              <label>
-                <TextInput
-                  className={classes.textinput}
-                  placeholder="Assignee Name"
-                  label="Assigned To"
-                  radius="xs"
-                  size="lg"
-                  name="assignee"
-                  type="text"
-                  onChange={handleChange} />
-              </label>
+                <label>
+                  <TextInput
+                    className={classes.textinput}
+                    placeholder="Assignee Name"
+                    label="Assigned To"
+                    radius="xs"
+                    size="lg"
+                    name="assignee"
+                    type="text"
+                    onChange={handleChange} />
+                </label>
 
-              <label>
-                <Text size="lg">
-                  Difficulty
-                </Text>
-                <Slider
-                  onChange={handleChange}
-                  defaultValue={defaultValues.difficulty}
-                  marks={Marks}
-                  type="range"
-                  min={1} max={5}
-                  name="difficulty" />
-              </label>
+                <label>
+                  <Text size="lg">
+                    Difficulty
+                  </Text>
+                  <Slider
+                    onChange={handleChange}
+                    defaultValue={defaultValues.difficulty}
+                    marks={Marks}
+                    type="range"
+                    min={1} max={5}
+                    name="difficulty" />
+                </label>
 
-              <label>
-                <Button
-                  className={classes.button}
-                  type="submit">
-                  Add Item</Button>
-              </label>
-            </form>
-          </Card>
+                <label>
+                  <Button
+                    className={classes.button}
+                    type="submit">
+                    Add Item</Button>
+                </label>
+              </form>
+            </Card>
+          </Auth>
         </Grid.Col>
         <Grid.Col span={5}>
 
