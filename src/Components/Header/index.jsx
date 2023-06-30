@@ -61,8 +61,7 @@ function Header() {
             <Navbar className={classes.navbar} >
                 <Link className={classes.link} to="/" default >Home</Link>
                 <Link className={classes.link} to="/settings">Settings</Link>
-            </Navbar>
-            <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
         <label> username:
           <input onChange={(e) => setUsername(e.target.value)} />
         </label>
@@ -73,6 +72,8 @@ function Header() {
       </form>
 
       <button onClick={logout}>Logout</button>
+            </Navbar>
+           
       {/* <label>Change Email
         <input onChange={(e) => setEmail(e.target.value)} />
       </label>
