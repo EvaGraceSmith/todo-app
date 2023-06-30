@@ -59,6 +59,8 @@ Can they see context?
 
 In Phase 2, we’re going to extend the functionality of our application by allowing the user to make some decisions on how they would like the application to function. Specifically, we’ll let them make changes to 2 settings.
 
+![Phase 2 UML](./src/assets/phase2UML.png);
+
 * Implement the Context API to make some basic application settings available to components.
 
 * How many To Do Items to show at once.
@@ -73,10 +75,18 @@ In Phase 2, we’re going to extend the functionality of our application by allo
 * Save the users choices in Local Storage.
 * Retrieve their preferences from Local Storage and apply them to the application on startup.
 
+### Links
+
+[Deployment: CodeSandbox on context-settings branch](https://codesandbox.io/p/github/EvaGraceSmith/todo-app/context-methods?workspaceId=0f6b3b9a-f258-4570-996a-1c11d92f10b3)
+
+### Credits
+
+Image by <a href="https://pixabay.com/users/joyinthecommonplace-2801733/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1474675">Sarina Kinnunen</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1474675">Pixabay</a>
+
 ### Collaborators
 
 Ryan Galloway - Instructor
 Daniel Frey - TA
 Mark Smith - Tutor
 
-!["Resty"](./src/assets/rusty.png)
+!["To Do List"](./src/assets/list.jpg)

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form';
-import { Button, Card, createStyles, Grid, Header, Slider,Text, TextInput } from "@mantine/core";
+import { Button, Card, createStyles, Grid, Header, Slider, Text, TextInput } from "@mantine/core";
 import { v4 as uuid } from 'uuid';
 import List from '../List';
 
@@ -26,7 +26,7 @@ const useStyles = createStyles((theme) => ({
   grid: {
   },
 
-  label:{
+  label: {
 
   },
 
@@ -36,23 +36,23 @@ const useStyles = createStyles((theme) => ({
     marginBottom: 20,
   },
 
-  card2:{
+  card2: {
     backgroundColor: theme.colors.gray[0],
     marginTop: 20,
     marginBottom: 20,
   },
 
-  button:{
+  button: {
     marginTop: 20,
     // marginBottom: 20,
   },
 
-  textinput:{
+  textinput: {
     marginBottom: 20,
   },
 
 
-  list:{
+  list: {
     marginTop: 20,
     marginBottom: 20,
   },
@@ -64,13 +64,13 @@ const Todo = () => {
   const { classes } = useStyles();
 
   // Configure marks to match step
-const Marks = [
-  { value: 0},
-  { value: 25 },
-  { value: 50 },
-  { value: 75 },
-  { value: 100 },
-];
+  const Marks = [
+    { value: 0 },
+    { value: 25 },
+    { value: 50 },
+    { value: 75 },
+    { value: 100 },
+  ];
 
   const [defaultValues] = useState({
     difficulty: 4,
@@ -124,55 +124,55 @@ const Marks = [
         <Grid.Col span={2}></Grid.Col>
         <Grid.Col span={3}>
           <Card className={classes.card}
-                      shadow='sm'
-                      padding='lg'
-                      withBorder
-          
+            shadow='sm'
+            padding='lg'
+            withBorder
+
           >
             <form onSubmit={handleSubmit}>
               <h2>Add To Do Item</h2>
 
               <label>
                 <TextInput
-                className={classes.textinput}
+                  className={classes.textinput}
                   placeholder="Item Details"
                   label="To Do Item"
                   radius="xs"
                   size="lg"
-                  name ="text"
-                  type = "text" 
+                  name="text"
+                  type="text"
                   onChange={handleChange} />
               </label>
 
               <label>
                 <TextInput
-                className={classes.textinput}
+                  className={classes.textinput}
                   placeholder="Assignee Name"
                   label="Assigned To"
                   radius="xs"
                   size="lg"
-                  name = "assignee"
-                  type = "text"
+                  name="assignee"
+                  type="text"
                   onChange={handleChange} />
               </label>
 
               <label>
-                  <Text size="lg">
+                <Text size="lg">
                   Difficulty
-                  </Text>
-                <Slider 
-                onChange={handleChange} 
-                defaultValue={defaultValues.difficulty} 
-                marks={Marks}
-                type="range" 
-                min={1} max={5} 
-                name="difficulty" />
+                </Text>
+                <Slider
+                  onChange={handleChange}
+                  defaultValue={defaultValues.difficulty}
+                  marks={Marks}
+                  type="range"
+                  min={1} max={5}
+                  name="difficulty" />
               </label>
 
               <label>
-                <Button 
-                className={classes.button}
-                type="submit">
+                <Button
+                  className={classes.button}
+                  type="submit">
                   Add Item</Button>
               </label>
             </form>
@@ -180,8 +180,8 @@ const Marks = [
         </Grid.Col>
         <Grid.Col span={5}>
 
-            <List
-            className={classes.list} 
+          <List
+            className={classes.list}
             list={list} toggleComplete={toggleComplete} deleteItem={deleteItem} />
 
         </Grid.Col>

@@ -6,38 +6,34 @@ import { When } from 'react-if';
 
 
 function SettingsForm() {
-  const { displayCount, showCompleted, sortField, setDisplayCount, setShowCompleted, setSortField } = useContext(
-    SettingsContext
-  );
+  const { 
+    displayCount, 
+    showCompleted, 
+    sort, 
+    setDisplayCount, 
+    setShowComplete, 
+    setSort,  
+    saveLocally, } = useContext(SettingsContext);
+  const [show, setShow] = useState(false)
+  
 
-  const [formValues, setFormValues] = useState({
-    displayCount,
-    showCompleted,
-    sortField,
-  });
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === 'checkbox' ? checked : value;
-    setFormValues((prevValues) => ({
-      ...prevValues,
-      [name]: newValue,
-    }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setDisplayCount(formValues.displayCount);
-    setShowCompleted(formValues.showCompleted);
-    setSortField(formValues.sortField);
+    saveLocally();
+    setShow(true);
+    e.target.reset();
   };
 
   return (
     <form onSubmit={handleSubmit}>
+
       <label>
-        <Switch checked={formValues.showCompleted} label="Show Completed ToDos" onChange={(e)=> {setShowCompleted(e.target.checked)
-        formValues.showCompleted= e.target.checked} }/>
+        <Switch 
+        checked={showCompleted} label="Show Completed ToDos" 
+        onChange={(e) => setShowComplete(e.currentTarget.checked)}/>
       </label>
+      
       <label>
         <NumberInput
           defaultValue={3}
@@ -46,8 +42,9 @@ function SettingsForm() {
           size="xs"
           // type="number"
           name="displayCount"
-          value={formValues.displayCount}
-          onChange={event => setDisplayCount(event.target.value)}
+          value={displayCount}
+          onChange={setDisplayCount}
+          
         />
       </label>
 
@@ -58,10 +55,10 @@ function SettingsForm() {
               label="Sort Keyword"
               size="xs"
               name="sortField" 
-              value={formValues.sortField} 
+              value={sort} 
               // onChange={handleChange}
               //this is what they did in class:
-              onChange={(e)=> {setSortField(e.target.value)}}
+              onChange={(e) => setSort(e.currentTarget.value)}
           // <option value="difficulty">Difficulty</option>
           // <option value="assignee">Assignee</option>
           // <option value="text">Text</option> 
