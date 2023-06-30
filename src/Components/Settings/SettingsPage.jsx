@@ -1,9 +1,10 @@
-import React from 'react';
+import { useContext, useState } from 'react';
 import { Grid, Card } from '@mantine/core';
 import SettingsForm from '../SettingsForm';
 import { SettingsContext } from '../../Context/Settings/index.jsx';
 import { ActionIcon, createStyles, Header } from "@mantine/core";
 import { Settings } from 'tabler-icons-react';
+import { When } from 'react-if';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -63,8 +64,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 function SettingsPage() {
-  const { displayCount, showComplete, sort } = React.useContext(SettingsContext);
+  const { displayCount, showComplete, sort } = useContext(SettingsContext);
   const { classes } = useStyles();
+  const [show, setShow] = useState(false)
 
   return (
     <>
@@ -83,18 +85,21 @@ function SettingsPage() {
           <h2>Update Settings</h2>
           <SettingsForm />
         </Card>
-        <Card className={classes.card2}
-          shadow='sm'
-          padding='lg'
-          withBorder
-          justifyContent='left'
-        >
-          <h2>Updated Settings</h2>
-          <p>{showComplete ? 'Show' : 'Hide'} Completed ToDos </p>
-          <p>Items Per page: {displayCount}</p>
-          <p>Sort Keyword: {sort}</p>
 
-        </Card>
+        <When condition={show}>
+          <Card className={classes.card2}
+            shadow='sm'
+            padding='lg'
+            withBorder
+            justifyContent='left'
+          >
+            <h2>Updated Settings</h2>
+            <p>{showComplete ? 'Show' : 'Hide'} Completed ToDos </p>
+            <p>Items Per page: {displayCount}</p>
+            <p>Sort Keyword: {sort}</p>
+          </Card>
+        </When>
+
       </Grid>
     </>
 

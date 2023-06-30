@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { SettingsContext } from '../../Context/Settings/index.jsx';
 import { Button, NumberInput, Switch, TextInput } from '@mantine/core';
-import { When } from 'react-if';
 
 
 
@@ -40,7 +39,6 @@ function SettingsForm() {
           placeholder="Items per Page"
           label="Items per Page"
           size="xs"
-          // type="number"
           name="displayCount"
           value={displayCount}
           onChange={setDisplayCount}
@@ -56,12 +54,7 @@ function SettingsForm() {
               size="xs"
               name="sortField" 
               value={sort} 
-              // onChange={handleChange}
-              //this is what they did in class:
               onChange={(e) => setSort(e.currentTarget.value)}
-          // <option value="difficulty">Difficulty</option>
-          // <option value="assignee">Assignee</option>
-          // <option value="text">Text</option> 
         />
       </label>
       <Button 
