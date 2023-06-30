@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form';
-import { Button, Card, createStyles, Grid, Header, Slider,TextInput } from "@mantine/core";
+import { Button, Card, createStyles, Grid, Header, Slider,Text, TextInput } from "@mantine/core";
 import { v4 as uuid } from 'uuid';
 import List from '../List';
 
@@ -8,14 +8,16 @@ const useStyles = createStyles((theme) => ({
   header: {
     backgroundColor: theme.colors.dark[7],
     width: '70%',
-    height: 60,
+    height: 70,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'left',
     margin: 'auto',
     marginTop: 20,
-    padding: theme.spacing.md,
+    padding: theme.spacing.lg,
+    paddingTop: 30,
+    paddingBottom: 30,
     color: theme.colors.gray[0],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
@@ -120,7 +122,7 @@ const Marks = [
       {/* leave the form code inside of the Todo Component */}
       <Grid className={classes.grid}>
         <Grid.Col span={2}></Grid.Col>
-        <Grid.Col span={4}>
+        <Grid.Col span={3}>
           <Card className={classes.card}
                       shadow='sm'
                       padding='lg'
@@ -136,7 +138,7 @@ const Marks = [
                   placeholder="Item Details"
                   label="To Do Item"
                   radius="xs"
-                  size="xs"
+                  size="lg"
                   name ="text"
                   type = "text" 
                   onChange={handleChange} />
@@ -148,14 +150,16 @@ const Marks = [
                   placeholder="Assignee Name"
                   label="Assigned To"
                   radius="xs"
-                  size="xs"
+                  size="lg"
                   name = "assignee"
                   type = "text"
                   onChange={handleChange} />
               </label>
 
               <label>
-                <span>Difficulty</span>
+                  <Text size="lg">
+                  Difficulty
+                  </Text>
                 <Slider 
                 onChange={handleChange} 
                 defaultValue={defaultValues.difficulty} 
@@ -174,7 +178,7 @@ const Marks = [
             </form>
           </Card>
         </Grid.Col>
-        <Grid.Col span={4}>
+        <Grid.Col span={5}>
 
             <List
             className={classes.list} 
