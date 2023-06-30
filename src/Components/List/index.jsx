@@ -20,6 +20,9 @@ const useStyles = createStyles((theme) => ({
   card: {
     marginTop: 20,
   },
+  text: {
+    paddingRight: 180,
+  },
 }));
 
 
@@ -88,7 +91,9 @@ const displayList = renderList.slice(listStart, listEnd);
                 onClick={() => toggleComplete(item.id)}>
                   {item.complete ? 'Complete' : 'Pending'}
                 </Badge>
-                <Text size="lg" fontcolor="black">{item.assignee}</Text>
+                <Text 
+                className={classes.text}
+                size="lg" fontcolor="black" align="left">{item.assignee}</Text>
                 <CloseButton onClick={() => deleteItem(item.id)} 
                 title="Delete To Do Item"
                 size="xs"/>
