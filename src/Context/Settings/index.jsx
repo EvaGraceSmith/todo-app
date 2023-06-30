@@ -6,6 +6,8 @@ function SettingsProvider({ children }) {
   const [displayCount, setDisplayCount] = useState(3);
   const [showComplete, setShowComplete] = useState(false);
   const [sort, setSort] = useState('difficulty');
+ const [firstRender, setFirstRender] = useState(true);
+
 
 
 
@@ -19,10 +21,11 @@ function SettingsProvider({ children }) {
   useEffect(() => {
     const storedSettings = localStorage.getItem('settings');
     if (storedSettings) {
-      const { displayCount, showCompleted, sortField } = JSON.parse(storedSettings);
+      const { displayCount, showCompleted, sortField, firstRender } = JSON.parse(storedSettings);
       setDisplayCount(displayCount);
       setShowComplete(showCompleted);
       setSort(sortField);
+      setFirstRender(firstRender);
 
     }
   }, []);
@@ -31,10 +34,17 @@ function SettingsProvider({ children }) {
     const settings = {
       displayCount,
       showComplete,
-      sort
+      sort,
+      firstRender,
     };
-    localStorage.setItem('settings', JSON.stringify(settings));
-  }, [displayCount, showComplete, sort]);
+
+    if (firstRender) {
+      setFirstRender(false);
+    } else {
+      localStorage.setItem('settings', JSON.stringify(settings));
+    }
+   
+  }, [displayCount, showComplete, sort, firstRender]);
 
   const state = {
     displayCount,
@@ -43,8 +53,12 @@ function SettingsProvider({ children }) {
     setDisplayCount,
     setShowComplete,
     setSort,
-    saveLocally
+    saveLocally,
+    firstRender, 
+    setFirstRender,
   };
+
+
 
   return (
     <SettingsContext.Provider value={state}>
