@@ -9,11 +9,14 @@ function SettingsForm() {
     displayCount, 
     showCompleted, 
     sort, 
+    show,
     setDisplayCount, 
     setShowComplete, 
     setSort,  
-    saveLocally, } = useContext(SettingsContext);
-  const [show, setShow] = useState(false)
+    setShow,
+    saveLocally, 
+  } = useContext(SettingsContext);
+  // const [show, setShow] = useState(false)
   
 
 

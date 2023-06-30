@@ -64,9 +64,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 function SettingsPage() {
-  const { displayCount, showComplete, sort } = useContext(SettingsContext);
+  const { displayCount, showComplete, sort, show } = useContext(SettingsContext);
   const { classes } = useStyles();
-  const [show, setShow] = useState(false)
+  // const [show, setShow] = useState(false)
 
   return (
     <>
