@@ -79,6 +79,20 @@ In Phase 2, we’re going to extend the functionality of our application by allo
 
 [Deployment: CodeSandbox on context-settings branch](https://codesandbox.io/p/github/EvaGraceSmith/todo-app/context-methods?workspaceId=0f6b3b9a-f258-4570-996a-1c11d92f10b3)
 
+
+## To Do List Manager Phase 3: Adding security and access controls to the application.
+
+In Phase 3, we’d like to extend the functionality of the application by requiring users be logged in to view items and also restrict access based on user type. The user stories from Phases 1, and 2 remain unchanged. For this phase, we are now adding the following new user stories.
+
+* As a user, I want to provide a way for other users to create new accounts.
+* As a user, I want to provide a way for all users to login to their account.
+* As a user, I want to make sure that my To Do items are only viewable to users that have logged in with a valid account.
+* As a user, I want to ensure that only fellow users that are allowed to “create”, based on their user type, can add new To Do Items.
+* As a user, I want to ensure that only fellow users that are allowed to “update”, based on their user type, can mark To Do Items complete.
+* As a user, I want to ensure that only fellow users that are allowed to “delete”, based on their user type, can delete new To Do Items.
+
+
+
 ### Credits
 
 Image by <a href="https://pixabay.com/users/joyinthecommonplace-2801733/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1474675">Sarina Kinnunen</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1474675">Pixabay</a>
