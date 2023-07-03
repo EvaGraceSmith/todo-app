@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Grid, Card } from '@mantine/core';
 import SettingsForm from '../SettingsForm';
 import { SettingsContext } from '../../Context/Settings/index.jsx';
