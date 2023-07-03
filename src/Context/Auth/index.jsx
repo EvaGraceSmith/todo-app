@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import testUsers from './lib/users';
 import jwt_decode from "jwt-decode";
 import cookie from 'react-cookies';
+import axios from 'axios';
 
-const users = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  fullname: { type: String },
-  email: { type: String },
-  role: { type: String, default: 'user', enum: ['admin', 'editor', 'writer','user'] },
-});
+// const users = new mongoose.Schema({
+//   username: { type: String, required: true, unique: true },
+//   password: { type: String, required: true },
+//   fullname: { type: String },
+//   email: { type: String },
+//   role: { type: String, default: 'user', enum: ['admin', 'editor', 'writer','user'] },
+// });
 
 
 export const AuthContext = React.createContext();
@@ -42,9 +43,16 @@ function AuthProvider({ children }){
     }
   }
   
-  const login = (username, password) => {
-    let user = testUsers[username];
-    if (user && user.password === password){
+  const login = async (username, password) => {
+    let config = {
+      method: 'post',
+      baseURL: 'https://api-js401.herokuapp.com',
+      url: '/signin',
+      auth: {username, password}
+    }
+    let response = await axios(config);
+    let user = response.data;
+    if (user){
       try {
         _validateToken(user.token)
       } catch(err){
@@ -57,6 +65,7 @@ function AuthProvider({ children }){
   const logout = () => {
     setUser({});
     setIsLoggedIn(false);
+    cookie.remove('auth');
   }
 
   const can = (capability) => {
