@@ -1,15 +1,3 @@
-// import { Header } from "@mantine/core";
-
-// function HeaderSimple (){
-// return (
-// <Header height={60} p="xs">
-// This is my Header
-// </Header>
-// )
-// }
-
-// export default HeaderSimple;
-
 import { createStyles, Navbar } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import Login from '../Login';

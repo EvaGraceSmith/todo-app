@@ -3,6 +3,14 @@ import testUsers from './lib/users';
 import jwt_decode from "jwt-decode";
 import cookie from 'react-cookies';
 
+const users = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  fullname: { type: String },
+  email: { type: String },
+  role: { type: String, default: 'user', enum: ['admin', 'editor', 'writer','user'] },
+});
+
 
 export const AuthContext = React.createContext();
 

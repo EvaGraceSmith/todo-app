@@ -5,6 +5,13 @@ import { v4 as uuid } from 'uuid';
 import List from '../List';
 import Auth from '../Auth';
 
+const todo = mongoose.Schema({
+  text: { type: String, required: true },
+  assignee: { type: String },
+  complete: { type: Boolean, default:false },
+  difficulty: { type: Number, default: 1 },
+});
+
 const useStyles = createStyles((theme) => ({
   header: {
     backgroundColor: theme.colors.dark[7],
