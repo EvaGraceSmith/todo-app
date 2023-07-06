@@ -99,15 +99,20 @@ const Todo = () => {
 
   async function deleteItem(id) {
     await axios.delete(`https://api-js401.herokuapp.com/api/v1/todo/${id}`);
-    const items = list.filter(item => item.id !== id);
+    const items = list.filter(item => item._id !== id);
     setList(items);
   }
 
   async function toggleComplete(itemToUpdate){
     itemToUpdate.complete = !itemToUpdate.complete;
-    await axios.put(`https://api-js401.herokuapp.com/api/v1/todo/${itemToUpdate._id}`, itemToUpdate);
-    };
-
+    // build a request object with all of the details
+    let config = {
+      baseURL: `https://api-js401.herokuapp.com/api/v1/todo/${itemToUpdate._id}`,
+      method: 'put',
+      data: itemToUpdate
+    }
+    // make the call to update our data
+    await axios(config);
     let response = await axios.get('https://api-js401.herokuapp.com/api/v1/todo');
     let items = response.data.results;
     setList(items);
