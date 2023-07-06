@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { SettingsContext } from '../../Context/Settings/index.jsx';
 import { Button, NumberInput, Switch, TextInput } from '@mantine/core';
 
@@ -9,7 +9,6 @@ function SettingsForm() {
     displayCount, 
     showCompleted, 
     sort, 
-    show,
     setDisplayCount, 
     setShowComplete, 
     setSort,  

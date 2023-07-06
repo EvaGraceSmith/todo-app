@@ -94,7 +94,7 @@ function List({ list, toggleComplete, deleteItem }) {
                           marginTop="sm"
                           color={item.complete ? 'red' : 'green'}
                           variant="filled"
-                          onClick={() => toggleComplete(item.id)}>
+                          onClick={() => toggleComplete(item)}>
                           {item.complete ? 'Complete' : 'Pending'}
                         </Badge>
                       </Then>
@@ -118,7 +118,7 @@ function List({ list, toggleComplete, deleteItem }) {
                     </Text>
                   </Group>
                   <Auth capability="delete">
-                    <CloseButton onClick={() => deleteItem(item.id)}
+                    <CloseButton onClick={() => deleteItem(item._id)}
                       title="Delete To Do Item"
                       size="xs" />
                   </Auth>
