@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form';
 import { Button, Card, createStyles, Grid, Header, Slider, Text, TextInput } from "@mantine/core";
-import { v4 as uuid } from 'uuid';
 import List from '../List';
 import Auth from '../Auth';
 import axios from 'axios';
@@ -76,16 +75,7 @@ const Todo = () => {
   const [incomplete, setIncomplete] = useState([]);
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
-
-  // const todo = mongoose.Schema({
-  //   text: { type: String, required: true },
-  //   assignee: { type: String },
-  //   complete: { type: Boolean, default:false },
-  //   difficulty: { type: Number, default: 1 },
-  // });
-
   async function addItem(item) {
-    // item.id = uuid();
     item.complete = false;
     const config = {
       baseURL: 'https://api-js401.herokuapp.com/api/v1/todo',
@@ -103,7 +93,7 @@ const Todo = () => {
     setList(items);
   }
 
-  async function toggleComplete(itemToUpdate){
+  async function toggleComplete(itemToUpdate) {
     itemToUpdate.complete = !itemToUpdate.complete;
     // build a request object with all of the details
     let config = {
@@ -116,7 +106,7 @@ const Todo = () => {
     let response = await axios.get('https://api-js401.herokuapp.com/api/v1/todo');
     let items = response.data.results;
     setList(items);
-  } 
+  }
 
 
   useEffect(() => {
@@ -134,7 +124,7 @@ const Todo = () => {
       setList(response.data.results);
     })();
   }, []);
-  
+
   return (
     <>
       <Header className={classes.header}>

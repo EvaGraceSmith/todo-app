@@ -9,7 +9,6 @@ function SettingsForm() {
     displayCount, 
     showCompleted, 
     sort, 
-    show,
     setDisplayCount, 
     setShowComplete, 
     setSort,  
